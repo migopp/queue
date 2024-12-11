@@ -31,7 +31,9 @@ func (s *Server) Run() error {
 	//
 	// The enhancements from 1.22 are more than enough:
 	// https://go.dev/blog/routing-enhancements
-	http.HandleFunc("/", home)
+	http.HandleFunc("GET /", home)
+	http.HandleFunc("POST /to-add", add)
+	http.HandleFunc("GET /to-rem", rem)
 
 	// Log where we are serving
 	serveAddr := fmt.Sprintf("%s:%d", s.IP, s.Port)
